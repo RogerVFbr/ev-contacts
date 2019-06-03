@@ -31,16 +31,32 @@
 
 
         <div id="confirmCEPdata" class="center_div newcontacts-div-layout" v-if="showValidCep">
-            <p>CEP:</p>
-            <div class="alert alert-secondary" role="alert">{{valorCep}}</div>
-            <p>Street:</p>
-            <div class="alert alert-secondary" role="alert">{{street}}</div>
-            <p>Neighbourhood:</p>
-            <div class="alert alert-secondary" role="alert">{{neighbourhood}}</div>
-            <p>City:</p>
-            <div class="alert alert-secondary" role="alert">{{city}}</div>
-            <p>State:</p>
-            <div class="alert alert-secondary" role="alert">{{state}}</div>
+            <div class="formColumns floatleft">
+                <div class="alert alert-secondary" role="alert">
+                    <small class="form-text text-muted">
+                        CEP</small>
+                    {{valorCep}}</div>
+                <div class="alert alert-secondary" role="alert">
+                    <small class="form-text text-muted">
+                        Street</small>
+                    {{street}}</div>
+                <div class="alert alert-secondary" role="alert">
+                    <small class="form-text text-muted">
+                        Neighbourhood</small>
+                    {{neighbourhood}}</div>
+            </div>
+
+            <div class="formColumns floatright">
+                <div class="alert alert-secondary" role="alert">
+                    <small class="form-text text-muted">
+                        City</small>
+                    {{city}}</div>
+                <div class="alert alert-secondary" role="alert">
+                    <small class="form-text text-muted">
+                        State</small>
+                    {{state}}</div>
+            </div>
+
             <button id="confirmCEPdataButton" type="submit" class="btn btn-success fillDivWidth"
                     v-on:click="showInputRemainingData">Information is correct!</button>
             <button id="rejectCEPdataButton" type="submit" class="btn btn-danger fillDivWidth"
@@ -334,7 +350,7 @@
     }
 
     #confirmCEPdata {
-        width: 300px;
+        width: 600px;
         padding: 20px;
     }
 
