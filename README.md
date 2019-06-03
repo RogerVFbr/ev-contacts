@@ -14,7 +14,7 @@ Desafio técnico para a empresa E.V. Requisitos atendidos:
 * Foi implementado um fluxo de registro de contatos utilizando o ViaCep conforme indicado.
 
 ### Etapa 2
-* Estão implementados e medida de distância em linha reta, o clima no endereço e o link que abre a rota.
+* Estão implementados a medida de distância em linha reta, o clima no endereço e o link que abre a rota.
 
 ### Etapa 3
 * CSS do app foi customizado.
