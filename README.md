@@ -4,13 +4,13 @@
 Desafio técnico para a empresa E.V. Requisitos atendidos:
 
 ### Relativo às observações
-* O projeto esta todo contido na branch master.
+* O projeto está todo contido na branch master.
 * Link deste repositório: https://github.com/RogerVFbr/ev-contacts
 * Link para o deploy: https://ev-desafio.firebaseapp.com
 
 ### Etapa 1
 * O CRUD foi todo feito diretamente no Firebase.
-* O LocalStorage foi utilizado para implementar um sistema de log local para que a indicação para sua utilização pudesse ser atendida.
+* O LocalStorage foi utilizado para implementar um sistema de log local.
 * Foi implementado um fluxo de registro de contatos utilizando o ViaCep conforme indicado.
 
 ### Etapa 2
