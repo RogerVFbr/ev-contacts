@@ -22,3 +22,5 @@ yarn-error.log*
 src/sensitivedata/firebase.js
 src/sensitivedata/firebase.js
 src/sensitivedata/apixu.js
+src/sensitivedata/apixu.js
+src/sensitivedata/locationiq-geocoding.js
