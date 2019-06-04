@@ -1,5 +1,5 @@
 <template>
-    <div class="btn-group">
+    <div class="btn-group ev-button-group">
         <button type="button"class="btn btn-info btn-sm action-button" @click="openMap"
                 :disabled="item.latitude == '' || item.longitude == '' || clientLat == '' || clientLon == ''">
             <font-awesome-icon icon="info" />
@@ -9,7 +9,7 @@
                 :disabled="!isLogged">
             <font-awesome-icon icon="edit" />
         </button>
-        <button type="button" class="btn btn-danger btn-sm action-button" data-toggle="modal"
+        <button type="button" class="btn btn-danger btn-sm action-button ev-delete-button" data-toggle="modal"
                 :data-target="'#deleteConfirm' + itemKey"
                 :disabled="!isLogged">
             <font-awesome-icon icon="trash" />
@@ -49,9 +49,7 @@
             item: {
                 type: Object,
             },
-            itemKey: {
-                type: String
-            },
+            itemKey: {},
             callback: {},
             clientLat: {},
             clientLon: {},
@@ -71,8 +69,7 @@
         methods: {
             deleteContact: function () {
                 db.ref('contacts').child(this.itemKey).remove(error => {
-                    this.log.log("Name: " + this.item.name + " | Address: " + this.item.address
-                        + " | City: " + this.item.city);
+                    this.log.log("Name: " + this.item.name + " | City: " + this.item.city);
                     this.callback();
                 });
             },
@@ -94,6 +91,15 @@
     .action-button {
         width: 32px;
         color: white;
+    }
+
+    .ev-button-group {
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
+        border-radius: 3px !important;
+    }
+
+    .ev-delete-button {
+        border-radius: 0px 3px 3px 0px !important;
     }
 
 </style>

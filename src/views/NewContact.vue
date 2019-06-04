@@ -31,38 +31,20 @@
 
 
         <div id="confirmCEPdata" class="center_div newcontacts-div-layout" v-if="showValidCep">
-            <div class="formColumns floatleft">
-                <div class="alert alert-secondary" role="alert">
-                    <small class="form-text text-muted">
-                        CEP</small>
-                    {{valorCep}}</div>
-                <div class="alert alert-secondary" role="alert">
-                    <small class="form-text text-muted">
-                        Street</small>
-                    {{street}}</div>
-                <div class="alert alert-secondary" role="alert">
-                    <small class="form-text text-muted">
-                        Neighbourhood</small>
-                    {{neighbourhood}}</div>
-            </div>
 
-            <div class="formColumns floatright">
-                <div class="alert alert-secondary" role="alert">
-                    <small class="form-text text-muted">
-                        City</small>
-                    {{city}}</div>
-                <div class="alert alert-secondary" role="alert">
-                    <small class="form-text text-muted">
-                        State</small>
-                    {{state}}</div>
-            </div>
-
+            <div class="alert alert-secondary" role="alert">
+                <small class="form-text text-muted">
+                    Street / Neighbourhood</small>
+                {{street}} / {{neighbourhood}}</div>
+            <div class="alert alert-secondary" role="alert">
+                <small class="form-text text-muted">
+                    City / State</small>
+                {{city}} / {{state}}</div>
             <button id="confirmCEPdataButton" type="submit" class="btn btn-success fillDivWidth"
                     v-on:click="showInputRemainingData">Information is correct!</button>
             <button id="rejectCEPdataButton" type="submit" class="btn btn-danger fillDivWidth"
                     v-on:click="clearData">That's wrong.</button>
         </div>
-
 
         <div id="inputRemainingData" class="center_div newcontacts-div-layout"
              v-if="showRemainingData || goWithoutCEP">
@@ -327,8 +309,7 @@
                         this.showFetchingCoordinates = false;
                         console.log(error);
                     } else {
-                        this.log.log("Name: " + newContact.name + " | Address: " + newContact.address
-                            + " | City: " + newContact.city);
+                        this.log.log("Name: " + newContact.name + " | City: " + newContact.city);
                         this.$router.push('/')
                     }
                 })
@@ -351,7 +332,7 @@
     }
 
     #confirmCEPdata {
-        width: 600px;
+        width: 300px;
         padding: 20px;
     }
 
@@ -361,7 +342,7 @@
     }
 
     #confirmCEPdataButton{
-        margin-top: 20px;
+        margin-top: 0px;
         margin-bottom: 10px;
     }
 

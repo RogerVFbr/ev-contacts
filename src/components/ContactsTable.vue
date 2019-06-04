@@ -18,7 +18,7 @@
                     <font-awesome-icon icon="spinner" spin /><span class="contacts-table-loading-data">Loading data...</span>
                 </td>
             </tr>
-            <tr v-for="(item, itemKey) in contacts">
+            <tr v-for="item in contacts">
                 <th scope="row">{{ item.name }}</th>
                 <td>{{item.address}}</td>
                 <td>{{item.city}}</td>
@@ -33,7 +33,7 @@
                 <td v-else><font-awesome-icon icon="spinner" spin /></td>
                 <td>
                     <contacts-table-action-buttons :item=item
-                                                   :itemKey=itemKey
+                                                   :itemKey=item.key
                                                    :callback="updateTableContent"
                                                    :clientLat=browserLatitude
                                                    :clientLon=browserLongitude
@@ -91,7 +91,7 @@
         },
         data() {
             return {
-                contacts: {},
+                contacts: [],
                 dataFetched: false,
                 browserLatitude: '',
                 browserLongitude: ''
@@ -106,13 +106,27 @@
         methods: {
             updateTableContent: function () {
                 db.ref('contacts').once('value', snapshot => {
-                    this.contacts = snapshot.val();
+                    this.contacts = this.getObjectAsList(snapshot.val());
                     this.dataFetched = true;
                     let i;
-                    for (var key in this.contacts) {
-                        this.getWeatherIcon(key);
+                    for (i=0; i<this.contacts.length; i++) {
+                        this.getWeatherIcon(i);
                     }
                 })
+            },
+            getObjectAsList: function (obj) {
+                let x;
+                let list = [];
+                for (var prop in obj) {
+                    if (obj.hasOwnProperty(prop) && typeof(obj[prop]) == 'object') {
+                        var newEntry = obj[prop];
+                        newEntry.key = '';
+                        newEntry.key = prop;
+                        list.push(newEntry);
+                    }
+                }
+                list.sort((a, b) => (a.name > b.name) ? 1 : (a.address === b.address) ? 1 : -1 )
+                return list;
             },
             getBrowserPosition: function() {
                 if (navigator.geolocation) {
@@ -167,7 +181,6 @@
                 var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
                 var d = R * c; // Distance in km
                 return d.toFixed(2) + 'km';
-                // return 'test';
             },
             deg2rad: function (deg) {
                 return deg * (Math.PI/180)

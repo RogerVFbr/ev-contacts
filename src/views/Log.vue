@@ -1,12 +1,12 @@
 <template>
     <div class="about container log-container">
-        <table class="table contacts-div-layout">
+        <table class="table contacts-div-layout hideTable">
             <thead>
             <tr>
                 <th scope="col">Time</th>
                 <th scope="col">User</th>
                 <th scope="col">Type</th>
-                <th scope="col">Message</th>
+                <th scope="col">Contact</th>
             </tr>
             </thead>
             <tbody>
@@ -21,6 +21,23 @@
             </tr>
             </tbody>
         </table>
+
+        <div class="evcards-container showCards">
+            <div class="card evcard"  v-for="log in logData">
+                <div class="card-body">
+                    <small class="form-text text-muted">Time</small>
+                    <p class="card-text">{{ log.time }}</p>
+                    <small class="form-text text-muted">User</small>
+                    <p class="card-text">{{ log.name }}</p>
+                    <small class="form-text text-muted">Type</small>
+                    <p class="card-text">{{ log.type }}</p>
+                    <small class="form-text text-muted">Contact</small>
+                    <p class="card-text">{{ log.message }}</p>
+                </div>
+            </div>
+        </div>
+
+
         <button id="clearLogBtn" class="btn btn-info" @click="clear" v-if="logData.length != 0">Clear log</button>
     </div>
 </template>
@@ -69,6 +86,30 @@
 
   #clearLogBtn {
     margin-top: 20px;
+  }
+
+  .evcards-container {
+      display:none;
+  }
+
+  .evcard {
+      width: 15rem;
+      display: inline-block;
+      margin: 5px;
+      border: 1px solid rgba(0,0,0,.3);
+      border-radius: 5px;
+      background: rgba(250,250,250,0.8);
+      box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
+  }
+
+  @media only screen and (max-width: 768px) {
+      .hideTable {
+          display: none;
+      }
+
+      .showCards {
+          display: block !important;
+      }
   }
 
 </style>

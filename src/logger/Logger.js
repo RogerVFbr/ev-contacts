@@ -12,8 +12,13 @@ export class Logger {
 
     log(message) {
         var today = new Date();
-        var date = today.getDate() + ' / '+(today.getMonth()+1) + ' / '+today.getFullYear()
-            + " - " + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        var day = today.getDate()<10 ? "0" + today.getDate() : today.getDate();
+        var month = (today.getMonth()+1)<10 ? "0" + (today.getMonth()+1) : today.getMonth()+1;
+        var year = today.getFullYear()<10 ? "0" + today.getFullYear() : today.getFullYear();
+        var hour = today.getHours()<10 ? "0" + today.getHours() : today.getHours();
+        var minutes = today.getMinutes()<10 ? "0" + today.getMinutes() : today.getMinutes();
+        var seconds = today.getSeconds()<10 ? "0" + today.getSeconds() : today.getSeconds();
+        var date = day + '/'+ month + '/'+ year + " - " + hour + ":" + minutes + ":" + seconds;
         var log = {
             time: date,
             name: this.user,

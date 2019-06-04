@@ -221,8 +221,7 @@
                         this.showDatabaseError = true;
                         this.showUpdatingMessage = false;
                     } else {
-                        this.log.log("Name: " + newContact.name + " | Address: " + newContact.address
-                            + " | City: " + newContact.city);
+                        this.log.log("Name: " + newContact.name + " | City: " + newContact.city);
                         this.$router.push('/')
                     }
                 })
