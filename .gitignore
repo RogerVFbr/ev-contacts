@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw?
 src/sensitivedata/firebase.js
 src/sensitivedata/firebase.js
+src/sensitivedata/apixu.js
