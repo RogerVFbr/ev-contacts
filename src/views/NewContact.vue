@@ -1,5 +1,5 @@
 <template>
-     <div class="add-contacts-container">
+    <div class="add-contacts-container">
 
         <div id="cep" class="center_div newcontacts-div-layout" v-if="showInputCep">
             <form>
@@ -264,12 +264,12 @@
                 this.city = '';
                 this.state = '';
                 this.showInputCep = true,
-                this.showFetchingCep = false,
-                this.showErrorCep = false,
-                this.showAcceptedCep = false,
-                this.showValidCep = false,
-                this.showRemainingData = false,
-                this.goWithoutCEP = false
+                    this.showFetchingCep = false,
+                    this.showErrorCep = false,
+                    this.showAcceptedCep = false,
+                    this.showValidCep = false,
+                    this.showRemainingData = false,
+                    this.goWithoutCEP = false
             },
             allFieldsFilled: function () {
                 this.showDatabaseError = false;

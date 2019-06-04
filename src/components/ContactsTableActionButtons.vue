@@ -35,7 +35,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -91,8 +90,10 @@
 </script>
 
 <style scoped>
+
     .action-button {
         width: 32px;
         color: white;
     }
+
 </style>

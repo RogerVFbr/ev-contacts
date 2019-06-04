@@ -25,7 +25,6 @@
         },
         methods: {
             navigateToAdd: function () {
-                // $("body").css("overflow-y", "hidden");
                 this.$router.push('add');
             }
         }

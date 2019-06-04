@@ -11,11 +11,6 @@ Vue.use(Router)
 
 let router = new Router({
     routes: [
-        // {
-        //     path: '*',
-        //     name: 'contacts',
-        //     component: Contacts
-        // },
         {
             path: '/',
             name: 'contacts',
@@ -65,17 +60,5 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
-
-// auth.onAuthStateChanged((user) => {
-//     router.beforeRouteEnter((to, from next));
-//
-//
-//     if (user) {
-//         console.log('user logged.');
-//     }
-//     else {
-//         console.log('use not logged.');
-//     }
-// });
 
 export default router;

@@ -89,7 +89,6 @@
         components: {
             ContactsTableActionButtons
         },
-
         data() {
             return {
                 contacts: {},
@@ -99,13 +98,11 @@
             }
 
         },
-
         created() {
             this.getBrowserPosition();
             this.updateTableContent()
 
         },
-
         methods: {
             updateTableContent: function () {
                 db.ref('contacts').once('value', snapshot => {
@@ -176,14 +173,6 @@
                 return deg * (Math.PI/180)
             },
         },
-
-        filters: {
-            capitalize: function (value) {
-                if (!value) return ''
-                return value.toUpperCase();
-            },
-
-        }
     }
 
 </script>

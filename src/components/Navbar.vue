@@ -31,7 +31,6 @@
 
     export default {
         name: "navbar",
-
         created() {
             if (auth.currentUser) {
                 this.isLogged = true;
@@ -55,12 +54,15 @@
 </script>
 
 <style scoped>
+
     .navbar-custom {
         background: rgba(99, 202, 193, 1) !important;
         text-color: white !important;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, .25)
     }
+
     .username {
         margin-right: 10px;
     }
+
 </style>

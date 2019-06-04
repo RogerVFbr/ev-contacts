@@ -1,30 +1,28 @@
 <template>
-  <div class="about container log-container">
-    <table class="table contacts-div-layout">
-      <thead>
-      <tr>
-        <th scope="col">Time</th>
-        <th scope="col">User</th>
-        <th scope="col">Type</th>
-        <th scope="col">Message</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-if="logData.length == 0">
-        <td colspan="4">No logs yet. Add, update or delete to generate logs.</td>
-      </tr>
-      <tr v-for="log in logData">
-        <th>{{ log.time }}</th>
-        <td>{{ log.name }}</td>
-        <td>{{ log.type}}</td>
-        <td>{{ log.message }}</td>
-      </tr>
-      </tbody>
-    </table>
-
-    <button id="clearLogBtn" class="btn btn-info" @click="clear" v-if="logData.length != 0">Clear log</button>
-
-  </div>
+    <div class="about container log-container">
+        <table class="table contacts-div-layout">
+            <thead>
+            <tr>
+                <th scope="col">Time</th>
+                <th scope="col">User</th>
+                <th scope="col">Type</th>
+                <th scope="col">Message</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-if="logData.length == 0">
+                <td colspan="4">No logs yet. Add, update or delete to generate logs.</td>
+            </tr>
+            <tr v-for="log in logData">
+                <th>{{ log.time }}</th>
+                <td>{{ log.name }}</td>
+                <td>{{ log.type}}</td>
+                <td>{{ log.message }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <button id="clearLogBtn" class="btn btn-info" @click="clear" v-if="logData.length != 0">Clear log</button>
+    </div>
 </template>
 
 <script>
@@ -72,4 +70,5 @@
   #clearLogBtn {
     margin-top: 20px;
   }
+
 </style>
