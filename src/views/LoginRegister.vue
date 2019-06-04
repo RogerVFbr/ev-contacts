@@ -19,9 +19,17 @@
                            v-model="password">
                 </div>
                 <button id="loginBtn" type="submit" class="btn btn-primary fillDivWidth"
-                        v-on:click="login">Login</button>
+                        v-on:click="login" v-if="!loggingIn && !signingUp">Login</button>
                 <button id="registerBtn" type="submit" class="btn btn-warning fillDivWidth"
-                        v-on:click="register">Register</button>
+                        v-on:click="register" v-if="!loggingIn && !signingUp">Register</button>
+                <div class="alert alert-primary fillDivWidth login-register-message" role="alert"
+                     v-if="loggingIn">
+                    <font-awesome-icon icon="spinner" spin />  Logging in ...
+                </div>
+                <div class="alert alert-primary fillDivWidth login-register-message" role="alert"
+                     v-if="signingUp">
+                    <font-awesome-icon icon="spinner" spin />  Signing up ...
+                </div>
             </form>
         </div>
     </div>
@@ -36,24 +44,31 @@
         data() {
             return {
                 email: '',
-                password: ''
+                password: '',
+                loggingIn: false,
+                signingUp: false
             }
         },
         methods: {
             login: function () {
+                this.loggingIn = true;
                 auth.signInWithEmailAndPassword(this.email, this.password)
-                    .then(user => {
+                    .then( (user) => {
                         console.log('Successfully logged in.');
                         this.$router.push('/');
-
-                    }, err => {
-                        alert('Could not create account. ' + err);
+                    })
+                    .catch( (err) => {
+                        this.loggingIn = false;
+                        console.log(err);
+                        alert('Could not sign in to account. ' + err);
                     });
             },
             register: function () {
+                this.signingUp = true;
                 auth.createUserWithEmailAndPassword(this.email, this.password)
                     .then(user => {
-                        alert(`Account created for: ${user.email}`);
+                        this.signingUp = false;
+                        console.log(`Account created for: ${this.email}`);
                         this.login();
 
                     }, err => {
@@ -99,5 +114,9 @@
     #loginBtn {
         margin-top: 10px;
         margin-bottom: 10px;
+    }
+
+    .login-register-message {
+        margin-bottom: 0px;
     }
 </style>

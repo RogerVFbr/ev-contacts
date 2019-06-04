@@ -1,19 +1,21 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Contacts from './views/Contacts.vue'
-import { auth } from './sensitivedata/firebase';
-import Log from './views/Log.vue';
 import Update from './views/UpdateContact.vue';
+import LoginRegister from './views/LoginRegister.vue';
+import Log from './views/Log.vue';
+
+import { auth } from './sensitivedata/firebase';
 
 Vue.use(Router)
 
 let router = new Router({
     routes: [
-        {
-            path: '*',
-            name: 'contacts',
-            component: Contacts
-        },
+        // {
+        //     path: '*',
+        //     name: 'contacts',
+        //     component: Contacts
+        // },
         {
             path: '/',
             name: 'contacts',
@@ -44,12 +46,13 @@ let router = new Router({
         {
             path: '/login',
             name: 'login',
-            component: () => import('./views/LoginRegister.vue')
+            component: LoginRegister
         }
     ]
 })
 
 router.beforeEach((to, from, next) => {
+    // console.log(from);
     const currentUser = auth.currentUser;
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
     if (requiresAuth && !currentUser) {
@@ -62,5 +65,17 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+
+// auth.onAuthStateChanged((user) => {
+//     router.beforeRouteEnter((to, from next));
+//
+//
+//     if (user) {
+//         console.log('user logged.');
+//     }
+//     else {
+//         console.log('use not logged.');
+//     }
+// });
 
 export default router;

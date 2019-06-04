@@ -325,6 +325,7 @@
                     if (error) {
                         this.showDatabaseError = true;
                         this.showFetchingCoordinates = false;
+                        console.log(error);
                     } else {
                         this.log.log("Name: " + newContact.name + " | Address: " + newContact.address
                             + " | City: " + newContact.city);
