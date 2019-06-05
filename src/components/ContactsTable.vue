@@ -115,9 +115,9 @@
                 })
             },
             getObjectAsList: function (obj) {
-                let x;
+                let prop;
                 let list = [];
-                for (var prop in obj) {
+                for (prop in obj) {
                     if (obj.hasOwnProperty(prop) && typeof(obj[prop]) == 'object') {
                         var newEntry = obj[prop];
                         newEntry.key = '';
@@ -130,17 +130,16 @@
             },
             getBrowserPosition: function() {
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(this.saveBrowserPosition);
+                    navigator.geolocation.getCurrentPosition((position) => {
+                        this.browserLatitude = position.coords.latitude;
+                        this.browserLongitude = position.coords.longitude;
+                    });
 
                 } else {
                     console.log("Geolocation is not supported by this browser.");
                     this.browserLatitude = 'na';
                     this.browserLongitude = 'na';
                 }
-            },
-            saveBrowserPosition: function(position) {
-                this.browserLatitude = position.coords.latitude;
-                this.browserLongitude = position.coords.longitude;
             },
             getWeatherIcon: function(i) {
                 let currentCity = this.contacts[i].city
