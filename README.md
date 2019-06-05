@@ -7,6 +7,7 @@ Desafio técnico para a empresa E.V. Requisitos atendidos:
 * O projeto está todo contido na branch master.
 * Link deste repositório: https://github.com/RogerVFbr/ev-contacts
 * Link para o deploy: https://ev-desafio.firebaseapp.com
+* Arquivos com informações sensíveis foram omitidos do commit (chaves de api).
 
 ### Etapa 1
 * O CRUD foi todo feito diretamente no Firebase.
